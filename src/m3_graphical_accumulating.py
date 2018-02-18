@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Sreekar Manyam.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -79,7 +79,6 @@ def draw_parallel_lines(n, point, length, window):
     Side effects:
       See   draw_parallel_lines.pdf   in this project for pictures
         that may help you better understand the following specification:
-
       Draws  n  rg.Lines parallel to each other,
       all on the given rg.RoseWindow, such that:
         -- The first rg.Line has its left-most end at the given rg.Point.
@@ -88,7 +87,6 @@ def draw_parallel_lines(n, point, length, window):
         -- Each rg.Line has the given length.
         -- Each rg.Line is 30 pixels below the previous rg.Line.
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n: int
       :type point: rg.Point
@@ -96,7 +94,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +107,13 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x
+    y = point.y
+    for k in range(n):
+        parallel_line = rg.Line(rg.Point(x + length, y + k * 30), rg.Point(x, y + k * 30))
+        parallel_line.attach_to(window)
+        window.render(0.05)
 
 
 def run_test_draw_lines():
@@ -143,7 +148,6 @@ def draw_lines(n, point, window):
     Side effects:
       See   draw_lines.pdf   in this project for pictures that
         may help you better understand the following specification:
-
       Draws  n  rg.Lines on the given rg.RoseWindow, such that:
         -- The leftmost point of each of the rg.Lines
              is the given rg.Point.
@@ -154,14 +158,13 @@ def draw_lines(n, point, window):
               from  (pY - 100)  to  (pY + 100),
               where pY is the y-coordinate of the given rg.Point.
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n: int
       :type point: rg.Point
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -174,6 +177,13 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x
+    y = point.y
+    for k in range(n):
+        new_line = rg.Line(point, rg.Point(x + 100, 200//n*k+y-100))
+        new_line.attach_to(window)
+    window.render()
 
 
 # ----------------------------------------------------------------------
